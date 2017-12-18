@@ -1,0 +1,13 @@
+--- pthread.h	2017-12-19 00:00:59.382914800 +0200
++++ pthread.h.new	2017-12-19 00:02:29.649655700 +0200
+@@ -313,6 +313,10 @@
+ #endif
+ #endif
+ 
++#if _MSC_VER >= 1900
++#define HAVE_STRUCT_TIMESPEC
++#endif
++
+ #if !defined(HAVE_STRUCT_TIMESPEC)
+ #define HAVE_STRUCT_TIMESPEC
+ #if !defined(_TIMESPEC_DEFINED)
