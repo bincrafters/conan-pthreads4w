@@ -1,3 +1,5 @@
+[![Download](https://api.bintray.com/packages/bincrafters/public-conan/pthreads4w%3Abincrafters/images/download.svg) ](https://bintray.com/bincrafters/public-conan/pthreads4w%3Abincrafters/_latestVersion)
+[![Build status](https://ci.appveyor.com/api/projects/status/78stn9damdp1kaax?svg=true)](https://ci.appveyor.com/project/BinCrafters/conan-pthreads4w)
 
 [Conan.io](https://conan.io) package for [POSIX Threads for Windows](https://sourceforge.net/projects/pthreads4w/) project
 
