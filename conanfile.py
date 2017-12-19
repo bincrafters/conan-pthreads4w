@@ -5,12 +5,14 @@ from conans import ConanFile, CMake, tools
 import os
 
 
-class LibnameConan(ConanFile):
+class Pthreads4WConan(ConanFile):
     name = "pthreads4w"
     version = "2.9.1"
-    url = "https://github.com/bincrafters/conan-libname"
+    url = "https://sourceforge.net/projects/pthreads4w/"
+    source_url = "git://git.code.sf.net/p/pthreads4w/code"
+    git_tag = "v-2-9-1-release"
     description = "POSIX Threads for Windows"
-    license = "https://github.com/someauthor/somelib/blob/master/LICENSES"
+    license = "https://sourceforge.net/directory/license:lgpl/"
     exports_sources = ["CMakeLists.txt", "LICENSE.md", "pthread.h.diff", "ptw32_MCS_lock.c.diff"]
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False],
@@ -20,12 +22,8 @@ class LibnameConan(ConanFile):
     generators = "cmake"
 
     def source(self):
-        snapshot_name = "pthreads4w-code-cc6ba2cc027526e1973e75121d92bb5495bc96ae"
-        source_url = "https://sourceforge.net/code-snapshots/git/p/pt/pthreads4w/code.git"
-        tools.get("{0}/{1}.zip".format(source_url, snapshot_name))
-        extracted_dir = snapshot_name
-        os.rename(extracted_dir, "sources")
-        #Rename to "sources" is a convention to simplify later steps
+        self.run("git clone --depth=1 --branch={0} {1} sources"
+            .format(self.git_tag, self.source_url))
         tools.patch(base_path="sources", patch_file="pthread.h.diff")
         tools.patch(base_path="sources", patch_file="ptw32_MCS_lock.c.diff")
 
