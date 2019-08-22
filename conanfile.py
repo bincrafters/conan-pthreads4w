@@ -16,8 +16,7 @@ class Pthreads4WConan(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False],
         "exception_scheme": ["CPP", "SEH", "default"]}
-    default_options = "shared=False", \
-        "exception_scheme=default"
+    default_options = {'shared': False, 'exception_scheme': 'default'}
     generators = "cmake"
 
     def source(self):
